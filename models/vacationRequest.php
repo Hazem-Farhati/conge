@@ -8,14 +8,17 @@ class _vacation{
     {
         $this->db=$conn;
     }
+       
     //function to insert a new record into the attendee database
-    public function insertVacation($vt_id,$description,$first_date,$last_date){
-try {
+    public function insertVacation($user_id,$vt_id,$description,$first_date,$last_date){
+     
+        try {
     // define sql statement to be executed
-    $sql="INSERT INTO vacation_request (vt_id,description,first_date,last_date) VALUES(:vt_id,:description,:first_date,:last_date)";
+    $sql="INSERT INTO vacation_request (user_id,vt_id,description,first_date,last_date) VALUES(:user_id,:vt_id,:description,:first_date,:last_date)";
     //prepare the sql statement to be executuin
     $stmt=$this->db->prepare($sql);
 //bin all placeholders to the actual values
+    $stmt->bindparam(':user_id',$user_id);
     $stmt->bindparam(':description',$description);
     $stmt->bindparam(':first_date',$first_date);
     $stmt->bindparam(':last_date',$last_date);

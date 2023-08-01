@@ -42,7 +42,11 @@
             <input  type="hidden" class="form-control" id="user_type" name="user_type" value="user">
         <br />
      
+            <div class="custom-file">
+            <input required type="file" accept="image/*" class="custom-file-input" id="user_image" name="user_image">
+            <label class="custom-file-label" for="user_image"></label>
 
+        </div>
 
         <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
            <div class="text-center text-lg-start mt-4 pt-2">

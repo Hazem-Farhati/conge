@@ -7,18 +7,29 @@ include_once '../views/includes/session.php';
     require_once '../db/config.php'; 
     require_once '../controller/vacationRequest_controller.php';
     require_once '../controller/user_controller.php';
+require_once '../models/user.php';
 
 $results= $vacation->getVacationType();
 insert_vacation($vacation);
+if(isset( $_SESSION['user_id'])){
+                $id=$_SESSION['user_id'];
+                 $u=$_user->getUserByUser_id($id);
+         }
 
+         
 ?>
 
 <form class="container " method="post" action="vacation_view.php" enctype="multipart/form-data">
   <!-- Name input 
 
   
--->  
+-->    
+
      <div class="form-group">
+        <div class="form-outline mb-4">
+    <input type="hidden" class="form-control" id="user_id" name="user_id" value="<?php echo $u['user_id']?>" />
+  </div>
+
             <label for="vt_id">Select type</label>
             <select class="form-control" id="vt_id" name="vt_id">
                 <?php while($r = $results->fetch(PDO::FETCH_ASSOC)) {?>
@@ -36,7 +47,7 @@ insert_vacation($vacation);
 
     <div class="mb-3">
     <label for="ed" class="form-label text-danger">Ending date</label>
-    <input type="text" class="form-control" id="ed" value="mm/dd/yyyy"  name="last_date" >
+    <input  name="last_date" type="text" class="form-control" id="ed" value="mm/dd/yyyy"  >
   </div>
   <!-- Message input -->
   <div class="form-outline mb-4">

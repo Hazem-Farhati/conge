@@ -6,7 +6,7 @@ class _user{
     {
         $this->db=$conn;
     }
-    public function InsertUser($firstname,$lastname,$email,$password,$dob,$user_type){
+    public function InsertUser($firstname,$lastname,$email,$password,$dob,$user_type,$user_image_path){
         try {
             $result=$this->getUserByEmail($email);
             if($result['num']>0){
@@ -15,7 +15,7 @@ class _user{
             else{
                 $new_password=md5($password.$email);
     // define sql statement to be executed
-    $sql='INSERT INTO user (firstname,lastname,email,password,dob,user_type) VALUES(:fname,:lname,:email,:password,:dob,:user_type)';
+    $sql='INSERT INTO user (firstname,lastname,email,password,dob,user_type,user_image_path) VALUES(:fname,:lname,:email,:password,:dob,:user_type,:user_image_path)';
     //prepare the sql statement to be executuin
     $stmt=$this->db->prepare($sql);
 //bin all placeholders to the actual values
@@ -25,6 +25,7 @@ class _user{
     $stmt->bindparam(':password',$new_password);
     $stmt->bindparam(':dob',$dob);
     $stmt->bindparam(':user_type',$user_type);
+    $stmt->bindparam(':user_image_path',$user_image_path);
 
 
 
@@ -123,7 +124,6 @@ class _user{
     echo $e->getMessage();
     return false;
         }
-  
     }
         public function getUserByUser_id($id){
         try{

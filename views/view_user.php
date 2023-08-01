@@ -14,6 +14,7 @@ echo "error";
     $result = $_user->getUserDetails($id);}
 
 ?>
+<img src=<?php echo $profile_image ?> style="width: 26%;" />
 
 <div class="card" style="width: 18rem;margin-top:20px">
   <div class="card-body">

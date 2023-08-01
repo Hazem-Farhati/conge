@@ -31,6 +31,7 @@ $results= $vacation->getVacationType();
         </ul>
     <h5>Description</h5>
 		<p><?php echo $_POST['description'] ; ?></p>
+		<p><?php echo $_POST['user_id'] ; ?></p>
 
 
 	</article>

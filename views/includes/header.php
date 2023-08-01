@@ -25,13 +25,11 @@ require_once '../controller/user_controller.php' ;
         
       ?>   
        <li class="nav-item active">
-        <a class="nav-link" href="../views/home.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../views/home.php">Vacation Request <span class="sr-only">(current)</span></a>
 
     
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../views/vacation_view.php">My Vacation request</a>
-      </li><?php 
+    <?php 
       }?>
  
     
@@ -45,7 +43,6 @@ require_once '../controller/user_controller.php' ;
            
             if(isset( $_SESSION['user_id'])){
                 $id=$_SESSION['user_id'];
-
                 $reslut=$_user->getUserByUser_id($id);
             }
               if(!isset($_SESSION['user_id'])){
@@ -55,7 +52,7 @@ require_once '../controller/user_controller.php' ;
   if(isset( $_SESSION['user_id'])){
                 ?>
             <?php }?>
-            <a href="#" class="nav-link"><span>Hello ! <?php echo $reslut['firstname'] ?></span> <span
+            <a href="profile.php" class="nav-link"><span>Hello ! <?php echo $reslut['firstname'] ?>  <?php echo $reslut['user_id'] ?></span> <span
                     class="sr-only"></span></a>
             <a class="nav-item nav-link" href="logout.php">Logout</a>
             <?php } ?>

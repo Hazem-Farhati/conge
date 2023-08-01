@@ -10,7 +10,14 @@ function insert_user($_user){
         $password=$_POST['password'];
         $dob=$_POST['dob'];
         $user_type=$_POST['user_type'];
-    $result=$_user->InsertUser($fname,$lname,$email,$password,$dob,$user_type);
+        
+     $orig_file = $_FILES["user_image"]["tmp_name"];
+    $ext = pathinfo($_FILES["user_image"]["name"], PATHINFO_EXTENSION);
+    $target_dir = '../uploads/';
+    $profile_image = "$target_dir$fname.$ext";
+    move_uploaded_file($orig_file,$profile_image);
+
+    $result=$_user->InsertUser($fname,$lname,$email,$password,$dob,$user_type,$profile_image);
        
     
         if($result){

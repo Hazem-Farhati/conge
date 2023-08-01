@@ -1,14 +1,21 @@
 <?php 
 require_once '../db/config.php' ;
-
+require_once '../views/includes/session.php';
+require_once '../controller/user_controller.php' ;
+require_once '../models/user.php';
 function insert_vacation($vacation){
+        // if(isset( $_SESSION['user_id'])){
+        //         $id=$_SESSION['user_id'];
+        //         $reslut=$user->getUserByUser_id($id);
+        //     }
     if(isset($_POST['submitVacation'])){
-        
+         $user_id=$_POST['user_id'];
          $description=$_POST['description'];
+          $vt_id=$_POST['vt_id'];
         $first_date=$_POST['first_date'];
         $last_date=$_POST['last_date'];
-        $vt_id=$_POST['vt_id'];
-    $result=$vacation->InsertVacation($vt_id,$description,$first_date,$last_date);
+       
+    $result=$vacation->InsertVacation($user_id,$vt_id,$description,$first_date,$last_date);
         if($result){
             echo '';
         }

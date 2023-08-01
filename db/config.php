@@ -21,6 +21,6 @@ require_once  '../controller/vacationRequest_controller.php';
 $_user=new _user($pdo);
 $vacation=new _vacation($pdo);
 
-$_user->InsertUser("admin","admin","admin@gmail.com","admin","","");
+$_user->InsertUser("admin","admin","admin@gmail.com","admin","","","");
 
 ?>
